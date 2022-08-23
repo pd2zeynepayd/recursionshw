@@ -1,0 +1,145 @@
+#include<stdio.h>
+#include<string.h>
+//switch case menu
+int faktoriyel(int num){
+	if( num <= 1)
+		return 1;
+	return num*faktoriyel(num-1);
+}
+int fibonacci(int i){
+	if(i==0)
+		return 0;
+	if(i==1)
+		return 1;
+	return fibonacci(i-1)+fibonacci(i-2);
+	}
+int basamakTop(int sayi)
+{
+	if(sayi<=9)
+		return sayi;
+	return sayi%10 + basamakTop(sayi/10);
+}
+int basamakSayisi(int sayii)
+{
+	if(sayii<=9)
+		return 1;
+	return 1 + basamakSayisi(sayii/10);
+}
+int toplam(int s)
+{
+	if(s != 0)
+		return s + toplam(s-1);
+	else
+		return s;
+}
+int tersineKelime(char *p)
+{
+	if(*p!='\0')
+		tersineKelime(p+1);
+  
+		printf("%c",*p);   
+}
+int tersineSayi(int deger)
+{
+	if(deger!=0)
+		printf("%d",deger%10);
+		tersineSayi(deger/10);
+  
+}
+int carpTablo(int x,int y)
+{
+	printf("%d\n",x*y);
+	if(y!=10)
+	carpTablo(x,y+1);
+}
+int power(int z,int w)
+{
+	if(w==0)
+		return 1;
+	else 
+		return z * power(z,w-1);
+}
+int main(void){
+
+	
+    int secim;
+
+    while(1){
+		printf("-Faktoriyel bulmak icin 1\n");
+		printf("-Fibonacci bulmak icin 2\n");
+		printf("-Kullanici girisli bir sayinin basamaklarinin toplamini bulmak icin 3\n");
+		printf("-Kullanici girisli bir sayinin basamak sayisini bulmak icin 4\n");
+		printf("-Dogal sayilari toplamak icin 5\n");
+		printf("-Kullanici girisli kelimeyi tersine cevirmek icin 6\n");
+		printf("-Sayiyi tersine cevirmek icin 7\n");
+		printf("-Carpim tablosu icin 8\n");
+		printf("-Uslu sayi bulmak icin 9\n");
+		printf("Seciminiz: "); 
+		scanf("%d",&secim);
+
+		switch(secim){
+			case 1:
+                int num;
+                int result;
+				printf("Bir sayi giriniz:");
+				scanf("%d",&num);
+				result = faktoriyel(num);
+				printf("result = %d\n", result);
+				break;
+			case 2:
+				int i;
+				
+				for(i=0;i<10;i++){
+					printf("%d\t\n",fibonacci(i));
+				}
+				break;
+			case 3:
+				int sayi;
+				printf("Bir sayi giriniz:");
+				scanf("%d",&sayi);
+				printf("%d sayisinin basamaklarin toplami: %d\n", sayi, basamakTop(sayi));
+				break;
+			case 4:
+				int sayii;
+				printf("Sayi giriniz:");
+				scanf("%d",&sayii);
+				printf("%d sayisinin basamak sayisi = %d\n", sayii, basamakSayisi(sayii));
+				break;
+			case 5:
+				int say,sonuc;
+				printf("Pozitif bir dogal sayi giriniz:");
+				scanf("%d", &say);
+				sonuc = toplam(say);
+				printf("toplam = %d",sonuc);
+				break;
+			case 6:
+				char str[20];
+				printf("Kelime giriniz:");
+				scanf("%s",str);
+				tersineKelime(str);
+				break;
+			case 7:
+				int deger,sayi3;
+				printf("Sayi giriniz:");
+				scanf("%d",&sayi3);
+				tersineSayi(sayi3);
+				break;
+			case 8:
+				int rakam;
+				printf("Rakam giriniz:");
+				scanf("%d",&rakam);
+				carpTablo(rakam,1);
+				break;
+			case 9:
+				int z,w;
+				printf("Sayi giriniz:");
+				scanf("%d",&z);
+				printf("Us giriniz:");
+				scanf("%d",&w);			
+				printf("%d\n",power(z,w));
+				break;
+		}
+	}
+
+
+}
